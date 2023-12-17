@@ -8,6 +8,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSqlServer<DataContext>(builder.Configuration.GetConnectionString("DB_Connection"));
 
 var app = builder.Build();
 
@@ -19,7 +20,6 @@ if (app.Environment.IsDevelopment())
 }
 
 
-builder.Services.AddSqlServer<DataContext>(builder.Configuration.GetConnectionString("DB_Connection"));
 
 app.UseHttpsRedirection();
 
