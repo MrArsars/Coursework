@@ -1,5 +1,4 @@
-﻿using Coursework.Data;
-using Coursework.Models;
+﻿using Coursework.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Coursework.Controllers;
@@ -8,23 +7,22 @@ namespace Coursework.Controllers;
 [Route("MotionSensor")]
 public class MotionSensorController: ControllerBase
 {
-    private readonly DataContext _context;
-
-    public MotionSensorController(DataContext context)
+    [HttpGet("switch")]
+    public Task<IActionResult> Switch()
     {
-        _context = context;
+        var state = SystemState.SwitchState();
+        return Task.FromResult<IActionResult>(Ok(state));
+    }
+
+    [HttpGet("get")]
+    public Task<IActionResult> GetState()
+    {
+        return Task.FromResult<IActionResult>(Ok(SystemState.GetState()));
     }
 
     [HttpGet("add")]
-    public async Task<IActionResult> AddRecord()
+    public Task<IActionResult> AddRecord()
     {
-        await _context.MotionSensorData.AddAsync(new MotionSensorDataModel()
-        {
-            Id = 0,
-            Time = DateTime.Now,
-            IsMovingDetected = true,
-        });
-        await _context.SaveChangesAsync();
-        return Ok(true);
+        return Task.FromResult<IActionResult>(!SystemState.GetState() ? Ok(false) : Ok(true));
     }
 }

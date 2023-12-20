@@ -1,6 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coursework", "Coursework\Coursework.csproj", "{FEC758A9-4AEF-42C5-9FE5-99B1BB65EDA2}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coursework", "Coursework\Coursework.csproj", "{FEC758A9-4AEF-42C5-9FE5-99B1BB65EDA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelegramBot", "TelegramBot\TelegramBot.csproj", "{F5353D60-68EF-4ACB-8CDC-07A9D0B53C49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +17,15 @@ Global
 		{FEC758A9-4AEF-42C5-9FE5-99B1BB65EDA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEC758A9-4AEF-42C5-9FE5-99B1BB65EDA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEC758A9-4AEF-42C5-9FE5-99B1BB65EDA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5353D60-68EF-4ACB-8CDC-07A9D0B53C49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5353D60-68EF-4ACB-8CDC-07A9D0B53C49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5353D60-68EF-4ACB-8CDC-07A9D0B53C49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5353D60-68EF-4ACB-8CDC-07A9D0B53C49}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {43CC9BCB-3BCB-492E-A2D8-811EFC6B7E36}
 	EndGlobalSection
 EndGlobal
