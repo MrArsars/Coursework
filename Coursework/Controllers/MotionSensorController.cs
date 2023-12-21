@@ -1,28 +1,38 @@
 ﻿using Coursework.Models;
+using Coursework.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Coursework.Controllers;
 
 [ApiController]
 [Route("MotionSensor")]
-public class MotionSensorController: ControllerBase
+public class MotionSensorController : ControllerBase
 {
-    [HttpGet("switch")]
-    public Task<IActionResult> Switch()
+    private readonly TelegramBotService _telegram;
+
+    public MotionSensorController(TelegramBotService telegram)
     {
-        var state = SystemState.SwitchState();
-        return Task.FromResult<IActionResult>(Ok(state));
+        _telegram = telegram;
     }
 
-    [HttpGet("get")]
-    public Task<IActionResult> GetState()
-    {
-        return Task.FromResult<IActionResult>(Ok(SystemState.GetState()));
-    }
+    // [HttpGet("switch")]
+    // public Task<IActionResult> Switch()
+    // {
+    //     var state = SystemState.SwitchState();
+    //     return Task.FromResult<IActionResult>(Ok(state));
+    // }
+    //
+    // [HttpGet("get")]
+    // public Task<IActionResult> GetState()
+    // {
+    //     return Task.FromResult<IActionResult>(Ok(SystemState.GetState()));
+    // }
 
     [HttpGet("add")]
-    public Task<IActionResult> AddRecord()
+    public async Task<IActionResult> AddRecord()
     {
-        return Task.FromResult<IActionResult>(!SystemState.GetState() ? Ok(false) : Ok(true));
+        var state = SystemState.GetState();
+        if (state) await _telegram.SendMessageAsync();
+        return !state ? Ok(false) : Ok(true);
     }
 }
