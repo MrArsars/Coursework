@@ -21,7 +21,7 @@ public class TelegramBotService
 
     public async Task StartAsync()
     {
-        ReceiverOptions receiverOptions = new ReceiverOptions
+        var receiverOptions = new ReceiverOptions
         {
             AllowedUpdates = Array.Empty<UpdateType>()
         };
@@ -37,14 +37,8 @@ public class TelegramBotService
         Console.WriteLine($"Start listening for @{me.Username}");
     }
 
-    public void Stop()
-    {
-        _cancellationTokenSource.Cancel();
-    }
-
     const int chatId = 685732650;
-
-
+    
     public async Task SendMessageAsync()
     {
         await _botClient.SendTextMessageAsync(

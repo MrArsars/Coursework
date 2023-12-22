@@ -18,11 +18,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 var botService = app.Services.GetRequiredService<TelegramBotService>();
 
-// Start the Telegram bot service
 await botService.StartAsync();
-
 
 
 app.UseHttpsRedirection();
